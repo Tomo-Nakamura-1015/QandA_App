@@ -1,0 +1,29 @@
+<h2>質問一覧</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>質問No.</th>
+                    <th>題名</th>
+                    <th>名前</th>
+                    <th>メニュー</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @questions.each do |q| %>
+                <tr>
+                  <td><%= q.id %></td>
+                  <td><%= link_to q.title, question_path(q) %></td>
+                  <td><%= q.name %></td>
+                  <td>[ <%= link_to '編集', edit_question_path(q) %> ]　
+                  [ <%= link_to '削除', question_path(q), method: :delete, data:{ confirm: "本当に削除しますか？"} %>]</td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <div>
+        <%= link_to "新規質問投稿", new_question_path %>
+        </div>
+    </div>
+</div>
